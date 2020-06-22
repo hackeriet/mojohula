@@ -1,21 +1,25 @@
 package Hackeriet::Mojohula;
-use Mojo::Base 'Mojolicious';
+use 5.030000;
+use Mojo::Base 'Mojolicious', -signatures;
+
+our $VERSION = v0.0.1;
 
 # This method will run once at server start
-sub startup {
-  my $self = shift;
+sub startup ($c) {
 
   # Load configuration from hash returned by config file
-  my $config = $self->plugin('Config');
+  my $config = $c->plugin('Config');
 
-  # Configure the application
-  $self->secrets($config->{secrets});
+  # Application configuration
+  $c->secrets($config->{secrets});
 
-  # Router
-  my $r = $self->routes;
+  # Vue.js main route
+  my $r = $c->routes;
+  $r->get('/')->to('static#index');
 
-  # Normal route to controller
-  $r->get('/')->to('example#welcome');
+  # OpenAPI routes
+  $c->plugin('OpenAPI' => {url => $c->home->rel_file("mojohula.json")});
+
 }
 
 1;

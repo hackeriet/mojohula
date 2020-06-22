@@ -1,0 +1,33 @@
+{
+  "swagger": "2.0",
+  "info": { "version": "1.0", "title": "MojoHula" },
+  "basePath": "/v2",
+  "paths": {
+    "/login": {
+      "get": {
+        "operationId": "userLogin",
+        "x-mojo-name": "user_login",
+        "x-mojo-to": "auth#login",
+        "summary": "login user",
+        "parameters": [
+          {"in": "body", "name": "body", "schema": {"type": "object"}},
+          {"in": "query", "name": "age", "type": "integer"}
+        ],
+        "responses": {
+          "200": {
+            "description": "Login success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pets": {
+                  "type": "array",
+                  "items": { "type": "object" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

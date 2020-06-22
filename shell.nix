@@ -7,6 +7,9 @@ pkgs.mkShell {
     MojoSQLite
     MojoPg
     TestPerlCritic
+    MojoliciousPluginOpenAPI
   ];
+  shellHook = ''
+    export LANGUAGE=C
+  '';
 }
-

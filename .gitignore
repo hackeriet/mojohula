@@ -25,3 +25,7 @@ pnpm-debug.log*
 *.sw?
 
 t/var/test.db
+MYMETA.*
+Makefile
+blib/
+pm_to_blib

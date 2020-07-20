@@ -1,3 +1,6 @@
+// This file sets up the Vue.js developer environment so it uses the
+// Mojolicious backend for accessing the OpenAPI endpoints.
+
 module.exports = {
   devServer: {
     proxy: { '^/v2/': {
